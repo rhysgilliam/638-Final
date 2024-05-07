@@ -14,5 +14,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Guitar Minigame.unity
     guid: a7efac3f0da73e7439004acd29203987
+  - enabled: 1
+    path: Assets/Scenes/Butcher.unity
+    guid: 4317fc7f790ba64439e47e3dae9de4c6
+  - enabled: 1
+    path: Assets/Scenes/Alley 2.unity
+    guid: 2d2281c1a5471fc48b9922936affada2
+  - enabled: 1
+    path: Assets/Scenes/TTT.unity
+    guid: 5e5d77c0b48325245a2f0297c163d3bd
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

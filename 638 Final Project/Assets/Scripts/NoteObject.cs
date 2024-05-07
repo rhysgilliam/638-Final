@@ -11,7 +11,7 @@ public class NoteObject : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        Debug.Log("Rotation is: " + gameObject.GetComponent<Transform>().rotation.eulerAngles.z);
+        // Debug.Log("Rotation is: " + gameObject.GetComponent<Transform>().rotation.eulerAngles.z);
         keyToPress = gameObject.GetComponent<Transform>().rotation.eulerAngles.z switch
         {
             0 => KeyCode.RightArrow,

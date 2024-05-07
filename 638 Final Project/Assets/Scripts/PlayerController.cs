@@ -8,24 +8,31 @@ public class PlayerController : MonoBehaviour
 {
     public Animator anim;
     public SpriteRenderer sprite;
-    public GameObject interactText;
+    private GameObject _interactText;
     
     [SerializeField] private float speed;
     private Rigidbody2D _rb;
     private Vector2 _moveInput;
     private bool _isMoving;
-    
-    private static readonly int IsMoving = Animator.StringToHash("isWalking");
+    private bool _bufferedInput;
 
-    private void Awake()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-    }
+    public GameObject dialogueText;
+
+    private static readonly int IsMoving = Animator.StringToHash("isWalking");
 
     // Start is called before the first frame update
     private void Start()
     {
+        _bufferedInput = false;
+        _interactText = GameObject.FindGameObjectWithTag("Interact Text");
+        _interactText.SetActive(false);
+        _rb = GetComponent<Rigidbody2D>();
         _isMoving = false;
+    }
+
+    private void Update()
+    {
+        _bufferedInput = Input.GetKey(KeyCode.Space);
     }
     
     private void FixedUpdate()
@@ -47,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (Input.GetKeyDown(KeyCode.Space) && 
+        if (_bufferedInput && 
             other.gameObject.TryGetComponent<IInteractable>(out var interactable))
         {
             interactable.Interact();
@@ -56,11 +63,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        interactText.SetActive(true);
+        if (_interactText != null)
+            _interactText.SetActive(true);
+        
+        if (dialogueText != null && other.CompareTag("Guy"))
+            dialogueText.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        interactText.SetActive(false);
+        if (_interactText != null)
+            _interactText.SetActive(false);
+        
+        if (dialogueText != null && other.CompareTag("Guy"))
+            dialogueText.SetActive(true);
     }
 }

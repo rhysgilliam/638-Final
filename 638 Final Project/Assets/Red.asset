@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
-  m_Name: Grayscale
+  m_Name: Red
   m_EditorClassIdentifier: 
   settings:
-  - {fileID: 4931819784938596254}
---- !u!114 &4931819784938596254
+  - {fileID: 7138405948760447983}
+--- !u!114 &7138405948760447983
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,8 +78,8 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   saturation:
-    overrideState: 1
-    value: -70
+    overrideState: 0
+    value: 0
   brightness:
     overrideState: 0
     value: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   mixerRedOutRedIn:
-    overrideState: 0
+    overrideState: 1
     value: 200
   mixerRedOutGreenIn:
     overrideState: 0
@@ -117,14 +117,14 @@ MonoBehaviour:
     overrideState: 0
     value: 100
   lift:
-    overrideState: 0
-    value: {x: 1, y: 0.0019465091, z: 0, w: 0}
+    overrideState: 1
+    value: {x: 1, y: 0.98478186, z: 0.97846806, w: 0}
   gamma:
     overrideState: 0
-    value: {x: 0.9592924, y: 0.9911838, z: 1, w: 0}
+    value: {x: 1, y: 1, z: 1, w: 0}
   gain:
     overrideState: 0
-    value: {x: 0.9829901, y: 0.9777875, z: 1, w: 0}
+    value: {x: 1, y: 1, z: 1, w: 0}
   masterCurve:
     overrideState: 0
     value:

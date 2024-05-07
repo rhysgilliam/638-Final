@@ -51,7 +51,7 @@ public class RhythmGameManager : MonoBehaviour
                 break;
             case true:
                 _grayscaleTimer = 0;
-                _master.SetSaturation(_master.GetSaturation() + 1f);
+                _master.SetSaturation(Mathf.Min(_master.GetSaturation() + 1f, 0f));
                 break;
         }
 

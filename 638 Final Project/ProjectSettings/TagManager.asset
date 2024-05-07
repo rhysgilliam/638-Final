@@ -7,6 +7,10 @@ TagManager:
   - Activator
   - New Scene
   - Interact Text
+  - Guy
+  - Row 1
+  - Row 2
+  - Row 3
   layers:
   - Default
   - TransparentFX

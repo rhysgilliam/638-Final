@@ -6,8 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class AlleywayEntrance : MonoBehaviour, IInteractable
 {
+    private MasterControl _masterControl;
+
+    private void Start()
+    {
+        _masterControl = MasterControl.GetMasterControl();
+    }
     public void Interact()
     {
-        SceneManager.LoadScene("Alley 1");
+        SceneManager.LoadScene(_masterControl.Day == 1 ? "Alley 1" : "Alley 2");
     }
 }
