@@ -112,9 +112,9 @@ public class GameScript : MonoBehaviour
         if (CheckWin() != -1)
             return;
         
-        
         int i;
         int j;
+        
         do
         {
             // Debug.Log("Choosing tile...");
