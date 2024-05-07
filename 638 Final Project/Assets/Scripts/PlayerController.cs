@@ -14,16 +14,18 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb;
     private Vector2 _moveInput;
     private bool _isMoving;
-    private bool _bufferedInput;
+    // private bool _bufferedInput;
 
     public GameObject dialogueText;
 
     private static readonly int IsMoving = Animator.StringToHash("isWalking");
 
+    private IInteractable _interacting;
+
     // Start is called before the first frame update
     private void Start()
     {
-        _bufferedInput = false;
+        // _bufferedInput = false;
         _interactText = GameObject.FindGameObjectWithTag("Interact Text");
         _interactText.SetActive(false);
         _rb = GetComponent<Rigidbody2D>();
@@ -32,7 +34,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        _bufferedInput = Input.GetKey(KeyCode.Space);
+        // _bufferedInput = Input.GetKey(KeyCode.Space);
+        if (_interacting != null && Input.GetKeyDown(KeyCode.Space))
+            _interacting.Interact();
     }
     
     private void FixedUpdate()
@@ -54,15 +58,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (_bufferedInput && 
-            other.gameObject.TryGetComponent<IInteractable>(out var interactable))
-        {
-            interactable.Interact();
-        }
+        // if ((_bufferedInput || Input.GetKey(KeyCode.Space)) && 
+        //     other.gameObject.TryGetComponent<IInteractable>(out var interactable))
+        // {
+        //     interactable.Interact();
+        // }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        other.gameObject.TryGetComponent<IInteractable>(out var interactable);
+        _interacting = interactable;
+        
         if (_interactText != null)
             _interactText.SetActive(true);
         
@@ -72,6 +79,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        _interacting = null;
+        
         if (_interactText != null)
             _interactText.SetActive(false);
         

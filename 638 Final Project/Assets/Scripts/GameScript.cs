@@ -108,14 +108,16 @@ public class GameScript : MonoBehaviour
     public void RandomTurn()
     {
         if (End)
-        {
             return;
-        }
+        if (CheckWin() != -1)
+            return;
+        
+        
         int i;
         int j;
         do
         {
-            Debug.Log("Choosing tile...");
+            // Debug.Log("Choosing tile...");
             i = Random.Range(0, 2);
             j = Random.Range(0, 2);
 
@@ -125,6 +127,7 @@ public class GameScript : MonoBehaviour
             }
             
         } while (Board[i][j] != 0);
+        
         Debug.Log("Chose tile " + i + ", " + j);
 
         _tiles[i][j].GetComponent<TurnScript>().SpriteRenderer.sprite =
